@@ -1,10 +1,29 @@
 <h1>Conference Publications</h1>
 
-<ul>
-    {% for pub in publication %}
+<table border="5">
+    <thead>
+        <tr>
+        <th>Conference-ID</th>
+        <th>Conference-Name</th>
+        <th>Conference-DOI</th>
+        <th>UGC-Listed</th>
+    </tr>
+    </thead>
+<tbody>
+    {% for pub in publications %}
 
+    <tr>
+        <td>{{pub.conferenceID}}</td>
+        <td>{{pub.conferenceName}}</td>
+        <td>{{pub.conferenceDOI}}</td>
+        <td>{{pub.UGCListed}}</td>
+    </tr>
+</tbody>
+
+        <tr cellspacing="5">
+            <td><a href="{% url 'single-conference-publications' pub.facultyID %}">View</a></td>
+        </tr>
         
-        <li>Title:<a href="{% url 'single-conference-publications' pub.facultyID %}">{{pub.conferenceName}}</a> --- {{pub.conferenceDescription}}</li>
-
     {% endfor %}
-</ul>
+        
+</table>

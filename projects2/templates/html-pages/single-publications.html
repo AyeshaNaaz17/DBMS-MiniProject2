@@ -1,11 +1,15 @@
 <h1>Single Publications</h1>
 
-<h2>{{pubObj.conferenceName}}</h2>
+<h2>{{pub.conferenceName}}</h2>
 <hr>
-{% for rating in rating_total %}
 
-    <span style="border: 1px solid grey;">{{rating}}</span>
+{% for nationality in Conference.conferenceNationality.all %}
+
+    <span style="border: 1px solid grey;">{{nationality}}</span>
 
 {% endfor %}
+
+
+<h4><a href="{% url 'create-publication' %}">create conference paper</a></h4>
 <br>
-<p>{{pubObj.conferenceDescription}}</p>
+<p>Hello</p>

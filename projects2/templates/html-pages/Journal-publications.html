@@ -1,0 +1,29 @@
+<h1>Journal Publications</h1>
+
+<table border="5">
+    <thead>
+        <tr>
+        <th>Journal-ID</th>
+        <th>Journal-Name</th>
+        <th>Journal-ISSN</th>
+        <th>UGC-Listed</th>
+    </tr>
+    </thead>
+<tbody>
+    {% for jpub in jpublications %}
+
+    <tr>
+        <td>{{jpub.journalID}}</td>
+        <td>{{jpub.journalName}}</td>
+        <td>{{jpub.journalISSN}}</td>
+        <td>{{jpub.UGCListed}}</td>
+    </tr>
+</tbody>
+
+        <tr cellspacing="5">
+            <td><a href="{% url 'single-journal-publications' jpub.facultyID %}">View</a></td>
+        </tr>
+        
+    {% endfor %}
+        
+</table>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Conference, Journal, Faculty, Post
+from .models import Conference, Journal, Faculty, Post, Event, RequestPublications, Rating
 from .forms import ConferenceForm, JournalForm, PostForm, EventForm, RequestPublicationsForm, RatingForm
 
 
@@ -28,9 +28,24 @@ def sjpub(request, pk):
     return render(request, 'html-pages/single-jpublications.html', context)
 
 def submissions(request):
-    subObj = Post.objects.all()
-    context = {'subObj': subObj}
+    submissions = Post.objects.all()
+    context = {'submissions': submissions}
     return render(request, 'html-pages/published-submissions.html', context)
+
+def EventSubmissions(request):
+    eveObj = Event.objects.all()
+    context = {'eveObj': eveObj}
+    return render(request, 'html-pages/published-events.html', context)
+
+def requestingPapers(request):
+    reqObj = RequestPublications.objects.all()
+    context = {'reqobj': reqObj}
+    return render(request, 'html-pages/profile-home.html', context)
+
+def ratedPublications(request):
+    r = Rating.objects.all()
+    context = {'r': r}
+    return render(request, 'html-pages/ratedPublications.html', context)
 
 def createPublications(request):
     form = ConferenceForm()
@@ -68,15 +83,34 @@ def postPublications(request):
 
 def publishingEvents(request):
     form = EventForm()
+
+    if request.method == "POST":
+        if form.is_valid():
+            if form.save():
+                return redirect('published-events')
+
     context = {'form': form}
     return render(request,  "html-pages/html-forms.html", context)
 
 def requestingPublications(request):
     form = RequestPublicationsForm()
+
+    if request.method == "POST":
+        if form.is_valid():
+            if form.save():
+                return redirect('profile-home')
+
     context = {'form': form}
     return render(request,  "html-pages/html-forms.html", context)
 
 def ratingPublications(request):
     form = RatingForm()
+
+    if request.method == "POST":
+        if form.is_valid():
+            if form.save():
+                return redirect('ratedPublications')
+
     context = {'form': form}
     return render(request,  "html-pages/html-forms.html", context)
+

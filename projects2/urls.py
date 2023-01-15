@@ -13,5 +13,8 @@ urlpatterns = [
     path('publishing-event/', views.publishingEvents, name='publishing-event'),
     path('requesting-publications/', views.requestingPublications, name='requesting-publications'),
     path('rating-publications/', views.ratingPublications, name='rating-publications'),
-    path('published-submissions', views.submissions, name='published-submissions'),
+    path('published-submissions/', views.submissions, name='published-submissions'),
+    path('published-events/', views.EventSubmissions, name='published-events'),
+    path('profile-home/', views.requestingPapers, name='profile-home'),
+    path('ratedPublications/', views.ratedPublications, name='ratedPublications'),
 ]

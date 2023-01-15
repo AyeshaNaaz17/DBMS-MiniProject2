@@ -1,0 +1,11 @@
+<h1>Single Publications</h1>
+
+<h2>{{pubObj.conferenceName}}</h2>
+<hr>
+{% for rating in rating_total %}
+
+    <span style="border: 1px solid grey;">{{rating}}</span>
+
+{% endfor %}
+<br>
+<p>{{pubObj.conferenceDescription}}</p>

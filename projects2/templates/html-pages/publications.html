@@ -1,0 +1,10 @@
+<h1>Conference Publications</h1>
+
+<ul>
+    {% for pub in publication %}
+
+        
+        <li>Title:<a href="{% url 'single-conference-publications' pub.facultyID %}">{{pub.conferenceName}}</a> --- {{pub.conferenceDescription}}</li>
+
+    {% endfor %}
+</ul>
